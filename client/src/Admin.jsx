@@ -1,0 +1,1 @@
+// Admin panel komponent – redigering av stegdata
