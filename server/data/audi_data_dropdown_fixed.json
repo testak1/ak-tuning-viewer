@@ -1,42 +1,19 @@
 {
   "Audi": {
-    "A7": {
-      "C7 - 2010 -> 2018": {
-        "3.0 V6 TDi - 245 hk": {
+    "A1": {
+      "8X - 2010 -> 2014": {
+        "1.4 TFSI - 122 hk": {
+          "Original": {
+            "EFFEKT": "122 hk",
+            "VRIDMOMENT": "200 Nm"
+          },
           "Steg 1": {
-            "Original": "500 Nm",
-            "Optimerad": "600 Nm",
-            "Ökning": "+ 100 Nm",
-            "Pris": "4 995 SEK",
-            "EFFEKT": "245 hk",
-            "VRIDMOMENT": "500 Nm"
-          },
-          "Steg 2": {
-            "Original": "500 Nm",
-            "Optimerad": "630 Nm",
-            "Ökning": "+ 130 Nm",
-            "EFFEKT": "245 hk",
-            "VRIDMOMENT": "500 Nm"
-          },
-          "DSG": {
-            "Original": "100 ms",
-            "Steg 1": "80 ms",
-            "Steg 2": "60 ms",
-            "Pris  - Steg 1": "3 495 SEK",
-            "Pris  - Steg 2": "3 995 SEK",
-            "LAUNCH CONTROL": "2900 rpm",
-            "RPM LIMIT": "4800 rpm",
-            "VÄXLINGSTID": "100 ms",
-            "Pris - Steg 1": "3 495 SEK",
-            "Pris - Steg 2": "3 995 SEK"
+            "EFFEKT": "150 hk",
+            "VRIDMOMENT": "250 Nm"
           },
           "ECO": {
-            "Original": "500 Nm",
-            "Optimerad": "600 Nm",
-            "Ökning": "+ 100 Nm",
-            "Uppskattad bränslebesparing": "+/- 10 %",
-            "Pris": "4 995 SEK",
-            "VRIDMOMENT": "500 Nm"
+            "EFFEKT": "135 hk",
+            "VRIDMOMENT": "220 Nm"
           }
         }
       }
