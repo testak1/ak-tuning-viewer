@@ -1,96 +1,13 @@
+
 <!DOCTYPE html>
-<html lang="sv" class="scroll-smooth">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#1e40af" />
-    <meta name="description" content="AK Tuning Viewer - Advanced visualization tool for performance tuning" />
-    
-    <!-- Primary Meta Tags -->
-    <title>AK Tuning Viewer | Performance Visualization Tool</title>
-    <meta name="title" content="AK Tuning Viewer | Performance Visualization Tool" />
-    <meta name="description" content="Advanced tool for visualizing and analyzing performance tuning data" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://yourdomain.com/" />
-    <meta property="og:title" content="AK Tuning Viewer | Performance Visualization Tool" />
-    <meta property="og:description" content="Advanced tool for visualizing and analyzing performance tuning data" />
-    <meta property="og:image" content="https://yourdomain.com/preview-image.jpg" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://yourdomain.com/" />
-    <meta property="twitter:title" content="AK Tuning Viewer | Performance Visualization Tool" />
-    <meta property="twitter:description" content="Advanced tool for visualizing and analyzing performance tuning data" />
-    <meta property="twitter:image" content="https://yourdomain.com/preview-image.jpg" />
-
-    <!-- Favicon & App Icons -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-
-    <!-- Preload critical resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-    
-    <!-- Critical CSS (optional) -->
-    <style>
-      /* Fallback font while loading */
-      @font-face {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: local('Inter'), local('Inter-Regular');
-      }
-      
-      /* Simple fade-in animation for better perceived performance */
-      #root {
-        opacity: 0;
-        animation: fadeIn 0.3s ease-in forwards;
-      }
-      @keyframes fadeIn {
-        to { opacity: 1; }
-      }
-    </style>
-
-    <!-- Preload the main JS bundle -->
-    <link rel="modulepreload" href="/src/main.jsx" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AK Tuning Viewer</title>
   </head>
-  <body class="antialiased bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <noscript>
-      <div class="p-4 text-center bg-red-100 text-red-800">
-        <strong>JavaScript is disabled!</strong> This application requires JavaScript to function properly.
-      </div>
-    </noscript>
-    
+  <body>
     <div id="root"></div>
-    
-    <!-- Loading indicator that gets removed when app mounts -->
-    <div id="loading" class="fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 transition-opacity duration-300">
-      <div class="animate-pulse flex flex-col items-center">
-        <div class="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        <p class="mt-4 text-lg font-medium">Loading AK Tuning Viewer...</p>
-      </div>
-    </div>
-
     <script type="module" src="/src/main.jsx"></script>
-    
-    <!-- Remove loading indicator when app mounts -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const loading = document.getElementById('loading');
-        if (loading) {
-          setTimeout(() => {
-            loading.style.opacity = '0';
-            setTimeout(() => loading.remove(), 300);
-          }, 500);
-        }
-      });
-    </script>
   </body>
 </html>
