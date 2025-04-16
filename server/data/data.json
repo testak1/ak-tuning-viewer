@@ -1,11 +1,23 @@
 {
-  "Audi": {
-    "A1": {
-      "2020": {
-        "1.4 TFSI": {
+  "Aston Martin": {
+    "DB9": {
+      "Alla": {
+        "5.9 V12 - 455 hk": {
           "Steg 1": {
-            "hk": 150,
-            "Nm": 250
+            "Original": "570 Nm",
+            "Optimerad": "590 Nm",
+            "Ökning": "+ 20 Nm",
+            "Pris": "6 999 SEK",
+            "EFFEKT": "455 hk",
+            "VRIDMOMENT": "570 Nm"
+          },
+          "ECO": {
+            "Original": "570 Nm",
+            "Optimerad": "590 Nm",
+            "Ökning": "+ 20 Nm",
+            "Uppskattad bränslebesparing": "",
+            "Pris": "6 999 SEK",
+            "VRIDMOMENT": "570 Nm"
           }
         }
       }
