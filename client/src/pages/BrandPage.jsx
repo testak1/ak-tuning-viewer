@@ -6,17 +6,22 @@ import CardItem from '../components/CardItem';
 export default function BrandPage() {
   const { brand } = useParams();
   const [models, setModels] = useState([]);
+
   useEffect(() => {
-    fetch('/api/data')
+    fetch(`${import.meta.env.VITE_API_URL}/api/data`)
       .then(res => res.json())
       .then(json => setModels(Object.keys(json[brand] || {})));
   }, [brand]);
+
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6">Modeller för {brand}</h1>
       <CardGrid>
         {models.map(m => (
-          <Link key={m} to={`/cars/${encodeURIComponent(brand)}/${encodeURIComponent(m)}`}>
+          <Link
+            key={m}
+            to={`/cars/${encodeURIComponent(brand)}/${encodeURIComponent(m)}`}
+          >
             <CardItem title={m} />
           </Link>
         ))}

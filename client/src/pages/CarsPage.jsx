@@ -5,9 +5,13 @@ import CardItem from '../components/CardItem';
 
 export default function CarsPage() {
   const [data, setData] = useState({});
+
   useEffect(() => {
-    fetch('/api/data').then(res => res.json()).then(setData);
+    fetch(`${import.meta.env.VITE_API_URL}/api/data`)
+      .then(res => res.json())
+      .then(setData);
   }, []);
+
   const brands = Object.keys(data);
   return (
     <div className="container mx-auto p-6">
