@@ -1,92 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import SelectCard from './components/SelectCard';
-import DynoChart from './components/DynoChart';
+// Uppdaterad App.jsx med modern layout
+import { useEffect, useState } from 'react';
 
 export default function App() {
   const [data, setData] = useState({});
-  const [selected, setSelected] = useState({ model: '', year: '', motor: '' });
+  const [selected, setSelected] = useState({
+    model: '',
+    year: '',
+    motor: ''
+  });
 
   useEffect(() => {
-    fetch('/api/data')
-      .then((res) => res.json())
+    fetch('https://ak-tuning-viewer.onrender.com/api/data')
+      .then(res => res.json())
       .then(setData);
   }, []);
 
-  const brand = 'Audi';
-  const models = Object.keys(data[brand] || {});
-  const years = selected.model ? Object.keys(data[brand][selected.model]) : [];
-  const motors = selected.year ? Object.keys(data[brand][selected.model][selected.year]) : [];
-  const stages = selected.motor ? data[brand][selected.model][selected.year][selected.motor] : {};
+  const models = Object.keys(data?.Audi || {});
+  const years = selected.model ? Object.keys(data.Audi[selected.model]) : [];
+  const motors = selected.year ? Object.keys(data.Audi[selected.model][selected.year]) : [];
+  const stages = selected.motor ? data.Audi[selected.model][selected.year][selected.motor] : {};
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white py-12">
-      <div className="mx-auto max-w-xl bg-white rounded-2xl shadow-lg p-8">
-        <h1 className="text-3xl font-extrabold text-gray-900 mb-6">AK Tuning Viewer</h1>
+    <div className="p-6 max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold mb-6 text-center">AK Tuning Viewer</h1>
 
-        <div className="grid gap-4 md:grid-cols-3 mb-8">
-          <SelectCard label="Modell">
-            <select
-              className="w-full p-2 border rounded"
-              value={selected.model}
-              onChange={(e) => setSelected({ model: e.target.value, year: '', motor: '' })}
-            >
-              <option value="">Välj modell</option>
-              {models.map((m) => (
-                <option key={m} value={m}>{m}</option>
-              ))}
-            </select>
-          </SelectCard>
-
-          {selected.model && (
-            <SelectCard label="Årsmodell">
-              <select
-                className="w-full p-2 border rounded"
-                value={selected.year}
-                onChange={(e) => setSelected((p) => ({ ...p, year: e.target.value, motor: '' }))}
-              >
-                <option value="">Välj årsmodell</option>
-                {years.map((y) => (
-                  <option key={y} value={y}>{y}</option>
-                ))}
-              </select>
-            </SelectCard>
-          )}
-
-          {selected.year && (
-            <SelectCard label="Motor">
-              <select
-                className="w-full p-2 border rounded"
-                value={selected.motor}
-                onChange={(e) => setSelected((p) => ({ ...p, motor: e.target.value }))}
-              >
-                <option value="">Välj motor</option>
-                {motors.map((m) => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
-            </SelectCard>
-          )}
-        </div>
-
-        {selected.motor && (
-          <>
-            <div className="space-y-4 mb-8">
-              {Object.entries(stages).map(([stage, values]) => (
-                <div key={stage} className="bg-white rounded-2xl shadow p-5">
-                  <h2 className="text-lg font-semibold mb-2">{stage}</h2>
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    {Object.entries(values).map(([k, v]) => (
-                      <li key={k}><strong>{k}:</strong> {v}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-
-            <DynoChart brand={brand} model={selected.model} year={selected.year} motor={selected.motor} />
-          </>
+      <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-6">
+        <select className="flex-1 p-2 border rounded" onChange={e => setSelected({ model: e.target.value })}>
+          <option value="">Välj modell</option>
+          {models.map(model => (
+            <option key={model} value={model}>{model}</option>
+          ))}
+        </select>
+        {selected.model && (
+          <select className="flex-1 p-2 border rounded" onChange={e => setSelected(prev => ({ ...prev, year: e.target.value }))}>
+            <option value="">Välj årsmodell</option>
+            {years.map(year => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+        )}
+        {selected.year && (
+          <select className="flex-1 p-2 border rounded" onChange={e => setSelected(prev => ({ ...prev, motor: e.target.value }))}>
+            <option value="">Välj motor</option>
+            {motors.map(motor => (
+              <option key={motor} value={motor}>{motor}</option>
+            ))}
+          </select>
         )}
       </div>
+
+      {selected.motor && (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {Object.entries(stages).map(([stage, values]) => (
+              <div key={stage} className="bg-white p-4 shadow rounded">
+                <h2 className="font-semibold text-lg mb-2">{stage}</h2>
+                <ul className="pl-4 list-disc text-sm space-y-1">
+                  {Object.entries(values).map(([k, v]) => (
+                    <li key={k}><strong>{k}:</strong> {v}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <h3 className="text-xl font-semibold mb-4">Dynograf</h3>
+            <img
+              className="w-full border rounded shadow"
+              src={`https://ak-tuning-viewer.onrender.com/dyno.png?brand=Audi&model=${encodeURIComponent(selected.model)}&year=${encodeURIComponent(selected.year)}&motor=${encodeURIComponent(selected.motor)}`}
+              alt="Dyno chart"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
