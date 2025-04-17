@@ -9,9 +9,9 @@ export default function MotorPage() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/data`)
       .then(res => res.json())
-      .then(json => {
-        setStages(json[brand]?.[model]?.[year]?.[motor] || {});
-      });
+      .then(json =>
+        setStages(json[brand]?.[model]?.[year]?.[motor] || {})
+      );
   }, [brand, model, year, motor]);
 
   return (
@@ -33,7 +33,7 @@ export default function MotorPage() {
           </div>
         ))}
       </div>
-      <DynoChart brand={brand} model={model} year={year} motor={motor} />
+      <DynoChart stages={stages} />
     </div>
   );
 }
