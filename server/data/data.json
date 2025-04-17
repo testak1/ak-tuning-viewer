@@ -1,15 +1,19 @@
 {
   "Audi": {
-    "A4": {
-      "2001-2004": {
-        "2.0": {
-          "Stage 1": {
-            "Power": "150 HK",
-            "Torque": "200 Nm"
+    "A1": {
+      "8X - 2010 -> 2014": {
+        "1.4 TFSI - 122 hk": {
+          "Original": {
+            "EFFEKT": "122 hk",
+            "VRIDMOMENT": "200 Nm"
           },
-          "Stage 2": {
-            "Power": "170 HK",
-            "Torque": "220 Nm"
+          "Steg 1": {
+            "EFFEKT": "150 hk",
+            "VRIDMOMENT": "250 Nm"
+          },
+          "ECO": {
+            "EFFEKT": "135 hk",
+            "VRIDMOMENT": "220 Nm"
           }
         }
       }
