@@ -3,14 +3,63 @@
     "A4": {
       "2001-2004": {
         "2.0": {
-          "Stage 1": {
-            "Power": "150 HK",
-            "Torque": "200 Nm"
-          },
-          "Stage 2": {
-            "Power": "170 HK",
-            "Torque": "220 Nm"
-          }
+          "Stage 1": { "Power": "150 HK", "Torque": "200 Nm" },
+          "Stage 2": { "Power": "170 HK", "Torque": "220 Nm" }
+        },
+        "1.8": {
+          "Stage 1": { "Power": "130 HK", "Torque": "180 Nm" },
+          "Stage 2": { "Power": "150 HK", "Torque": "200 Nm" }
+        }
+      },
+      "2004-2008": {
+        "2.0 TFSI": {
+          "Stage 1": { "Power": "160 HK", "Torque": "210 Nm" },
+          "Stage 2": { "Power": "180 HK", "Torque": "250 Nm" }
+        }
+      }
+    }
+  },
+
+  "BMW": {
+    "3 Series": {
+      "2005-2012": {
+        "320i": {
+          "Stage 1": { "Power": "150 HK", "Torque": "200 Nm" },
+          "Stage 2": { "Power": "170 HK", "Torque": "230 Nm" }
+        },
+        "330i": {
+          "Stage 1": { "Power": "190 HK", "Torque": "240 Nm" },
+          "Stage 2": { "Power": "210 HK", "Torque": "270 Nm" }
+        }
+      }
+    }
+  },
+
+  "Volkswagen": {
+    "Golf": {
+      "2012-2018": {
+        "1.2 TSI": {
+          "Stage 1": { "Power": "85 HK", "Torque": "155 Nm" },
+          "Stage 2": { "Power": "105 HK", "Torque": "180 Nm" }
+        },
+        "1.4 TSI": {
+          "Stage 1": { "Power": "122 HK", "Torque": "200 Nm" },
+          "Stage 2": { "Power": "140 HK", "Torque": "220 Nm" }
+        }
+      }
+    }
+  },
+
+  "Ford": {
+    "Focus": {
+      "2011-2018": {
+        "1.0 EcoBoost": {
+          "Stage 1": { "Power": "100 HK", "Torque": "170 Nm" },
+          "Stage 2": { "Power": "120 HK", "Torque": "200 Nm" }
+        },
+        "1.5 EcoBoost": {
+          "Stage 1": { "Power": "150 HK", "Torque": "240 Nm" },
+          "Stage 2": { "Power": "170 HK", "Torque": "270 Nm" }
         }
       }
     }
