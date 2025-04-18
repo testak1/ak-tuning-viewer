@@ -1,3 +1,4 @@
+// admin/components/CrudTable.jsx
 import React, { useState, useEffect } from 'react';
 
 export default function CrudTable({ resource, columns }) {
@@ -5,19 +6,19 @@ export default function CrudTable({ resource, columns }) {
   const [newItem, setNewItem] = useState({});
 
   useEffect(() => {
-    fetch(\`/api/admin/\${resource}\`)
+    fetch('/api/admin/' + resource)
       .then(res => res.json())
       .then(setItems);
   }, [resource]);
 
   const refresh = () => {
-    fetch(\`/api/admin/\${resource}\`)
+    fetch('/api/admin/' + resource)
       .then(res => res.json())
       .then(setItems);
   };
 
   const handleCreate = () => {
-    fetch(\`/api/admin/\${resource}\`, {
+    fetch('/api/admin/' + resource, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newItem)
@@ -28,7 +29,7 @@ export default function CrudTable({ resource, columns }) {
   };
 
   const handleUpdate = (id, field, value) => {
-    fetch(\`/api/admin/\${resource}/\${id}\`, {
+    fetch('/api/admin/' + resource + '/' + id, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ [field]: value })
@@ -36,7 +37,7 @@ export default function CrudTable({ resource, columns }) {
   };
 
   const handleDelete = id => {
-    fetch(\`/api/admin/\${resource}/\${id}\`, { method: 'DELETE' }).then(refresh);
+    fetch('/api/admin/' + resource + '/' + id, { method: 'DELETE' }).then(refresh);
   };
 
   return (
@@ -55,7 +56,7 @@ export default function CrudTable({ resource, columns }) {
               {columns.map(col => (
                 <td key={col}>
                   <input
-                    value={item[col]||''}
+                    value={item[col] || ''}
                     onChange={e => handleUpdate(item.id, col, e.target.value)}
                   />
                 </td>
@@ -68,7 +69,7 @@ export default function CrudTable({ resource, columns }) {
               <td key={col}>
                 <input
                   placeholder={col}
-                  value={newItem[col]||''}
+                  value={newItem[col] || ''}
                   onChange={e => setNewItem({ ...newItem, [col]: e.target.value })}
                 />
               </td>
@@ -78,5 +79,5 @@ export default function CrudTable({ resource, columns }) {
         </tbody>
       </table>
     </div>
-);
+  );
 }
