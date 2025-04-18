@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  created  DateTime @default(now())
+}
+
+model Make {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  models Model[]
+}
+
+model Model {
+  id      Int      @id @default(autoincrement())
+  name    String
+  make    Make     @relation(fields: [makeId], references: [id])
+  makeId  Int
+  years   Year[]
+  @@unique([makeId, name])
+}
+
+model Year {
+  id       Int      @id @default(autoincrement())
+  name     String
+  model    Model    @relation(fields: [modelId], references: [id])
+  modelId  Int
+  engines  Engine[]
+  @@unique([modelId, name])
+}
+
+model Engine {
+  id       Int      @id @default(autoincrement())
+  name     String
+  year     Year     @relation(fields: [yearId], references: [id])
+  yearId   Int
+  stages   Stage[]
+  @@unique([yearId, name])
+}
+
+model Stage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  power     Int
+  torque    Int
+  price     Int
+  engine    Engine   @relation(fields: [engineId], references: [id])
+  engineId  Int
+  @@unique([engineId, name])
+}
