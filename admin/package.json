@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prestart": "npx prisma migrate deploy",
     "start": "next start"
   },
   "dependencies": {
