@@ -8,7 +8,7 @@ export default NextAuth({
     CredentialsProvider({
       name: 'Email',
       credentials: {
-        email: { label: 'Email', type: 'text' },
+        email:    { label: 'Email',    type: 'text'     },
         password: { label: 'Password', type: 'password' }
       },
       async authorize(credentials) {
@@ -22,6 +22,12 @@ export default NextAuth({
       }
     })
   ],
+
+  // **ADD THIS** to point at your login page
+  pages: {
+    signIn: '/admin/login'
+  },
+
   session: { strategy: 'jwt' },
   callbacks: {
     async session({ session, token }) {
